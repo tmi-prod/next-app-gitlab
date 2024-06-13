@@ -1,8 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import hereMapSlice from '../../core/lib/features/hereMap/hereMapSlice';
+import { ProviderProps, TypedUseSelectorHook, UseDispatch, useDispatch, useSelector, useStore, UseStore } from 'react-redux';
 
 
-export const makeStore:any = () => {
+export const NextStore :any= () => {
     return configureStore({
         reducer: {
             Map:hereMapSlice
@@ -13,11 +14,13 @@ export const makeStore:any = () => {
 
 
 // Infer the type of makeStore
-export type AppStore = ReturnType<typeof makeStore>
+export type AppStore = ReturnType<typeof NextStore>
 // Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore['getState']>
-export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof NextStore.getState>
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof NextStore.dispatch
 
 
+export default NextStore;
 
 

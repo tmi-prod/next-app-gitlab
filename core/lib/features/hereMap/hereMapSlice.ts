@@ -5,15 +5,15 @@ import http from '../../../services/httpService';
 interface IMapState {
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
     error: Error | null;
-    visits: any[];
-    visitsCount: number;
+    markers: any[];
+    markersCount: number;
 }
 
 const initialState: IMapState = {
     status: 'idle',
     error: null,
-    visits: [],
-    visitsCount: 0,
+    markers: [],
+    markersCount: 0,
 };
 
 export const fetchData = createAsyncThunk(
