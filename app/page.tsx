@@ -1,54 +1,30 @@
 'use client';
 
+import IXDialog from '@/core/components/overlay/ixDialog/IXDialog';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function App() {
-  const [serachValue, setSerachValue] = useState<string>('');
+  const [visible, setVisible] = useState<boolean>(false);
+  const refDialog = useRef<Dialog>(null);
 
-  const [hideDialog, setHideDialog] = useState<boolean>(true);
+  const content = (
+    <p className="m-0">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+    </p>
+  );
 
-  const onButtonClickEvent = () => {};
-
-  const DialogHeader = (options: any) => {
-    return (
-      <div className="flex flex-row justify-content-start w-full">
-        <div className="text-right w-full">
-          <div className="p-input-icon-left w-full">
-            <i className="pi pi-search"></i>
-            <InputText
-              type="search"
-              value={serachValue}
-              onChange={(e) => setSerachValue}
-              placeholder="Search"
-              className="w-full h-30"
-            />
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const OnSubmit = () => {};
-
-  const DialogFooter = (options: any) => {
-    return (
-      <div className="col-12  p-0">
-        <div className="flex justify-content-end medium_text bg_darkBlue">
-          <Button
-            type="submit"
-            onClick={() => OnSubmit()}
-            className="m-0 mr-2"
-            disabled={false}
-            value={'Ok'}
-          ></Button>
-          <Button type="button" onClick={() => {}} value={'Cancel'} />
-        </div>
-      </div>
-    );
-  };
+  useEffect(() => {
+    console.log('refDialog', refDialog);
+  }, [refDialog]);
 
   return (
     <div className="flex h-full w-full p-1 m-1 align-items-center justify-content-center bg-surface">
@@ -57,21 +33,14 @@ export default function App() {
         severity="secondary"
         raised
         size="small"
-        onClick={onButtonClickEvent}
+        onClick={() => setVisible(true)}
       />
-      <Dialog
-        className="w-max  md:w-30rem sm:w-30rem "
-        contentClassName="px-2"
-        closable
-        visible
-        position={'center'}
-        //header={(options) => DialogHeader(options)}
-        //footer={(options) => DialogFooter(options)}
-        onHide={() => setHideDialog(true)}
-        resizable
-      >
-        <form className="h-full w-full"></form>
-      </Dialog>
+      <IXDialog
+        visibility={visible}
+        setVisibility={setVisible}
+        content={content}
+        ref={refDialog}
+      />
     </div>
   );
 }
