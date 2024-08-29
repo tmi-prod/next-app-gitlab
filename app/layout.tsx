@@ -4,6 +4,7 @@ import Providers from './StoreProvider';
 import 'primereact/resources/primereact.min.css'; //106Ko
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.min.css';
+import 'primeflex/themes/primeone-dark.css';
 import manifest from '../public/manifest.json';
 import './globals.css';
 import 'primereact/resources/themes/lara-light-cyan/theme.css';

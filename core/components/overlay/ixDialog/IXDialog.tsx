@@ -1,10 +1,12 @@
 'use client';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import Button from '@mui/material/Button';
 import { Dialog, DialogProps } from 'primereact/dialog';
 import * as React from 'react';
 import { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
-import { useForm } from 'react-hook-form';
+import { FormProvider, useForm, UseFormReturn } from 'react-hook-form';
+import * as yup from 'yup';
 
 export const IXDialog = forwardRef(function IXDialog(
   {
@@ -12,22 +14,18 @@ export const IXDialog = forwardRef(function IXDialog(
     setVisibility,
     dialogType = 'defalut',
     content,
+    methods,
   }: {
     visibility: boolean;
     setVisibility: Function;
     dialogType?: string;
     content: JSX.Element;
+    methods?: any;
   },
   ref: any
 ) {
   const [visible, setVisible] = useState<boolean>(visibility);
   const [type, setType] = useState<string>(dialogType);
-
-  const methods = useForm({
-    mode: 'onSubmit',
-    resolver: yupResolver(schema),
-    defaultValues: { ...defaultValues, ...parameters?.initialValues },
-  });
 
   const DialogHeader = (options: any) => {
     return (
@@ -61,16 +59,10 @@ export const IXDialog = forwardRef(function IXDialog(
           IsLoading: true,
         },
         Methods: {
-          GetCurrentImageIndex(): number {
-            return currentImageIndex;
+          IsVisible(): any {
+            return visible;
           },
-          SetCurrentImageIndex(index: number) {
-            setCurrentImageIndex(index);
-          },
-          /*   SlideFirst,
-                SlideLast,
-                SlideNext,
-                SlidePrev, */
+          onHide: () => onHide(),
         },
       };
       return customProps;
@@ -110,9 +102,9 @@ export const IXDialog = forwardRef(function IXDialog(
       resizable
       onHide={onHide}
     >
-      <form method={} className="h-full w-full">
-        {content}
-      </form>
+      <FormProvider {...methods}>
+        <form className="h-full w-full">{content}</form>
+      </FormProvider>
     </Dialog>
   );
 });
