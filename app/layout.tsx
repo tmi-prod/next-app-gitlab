@@ -1,13 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Providers from './StoreProvider';
-import 'primereact/resources/primereact.min.css'; //106Ko
-import 'primeicons/primeicons.css';
-import 'primeflex/primeflex.min.css';
-import 'primeflex/themes/primeone-dark.css';
 import manifest from '../public/manifest.json';
 import './globals.css';
-import 'primereact/resources/themes/lara-light-cyan/theme.css';
 import { PrimeReactProvider, PrimeReactContext } from 'primereact/api';
 import Tailwind from 'primereact/passthrough/tailwind';
 import { MyDesignSystem } from '@/core/styles/stylesController';
@@ -29,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <PrimeReactProvider value={{ unstyled: true, pt: Tailwind }}>
+        <PrimeReactProvider value={{ unstyled: true, pt: MyDesignSystem }}>
           <Providers>{children}</Providers>
         </PrimeReactProvider>
       </body>

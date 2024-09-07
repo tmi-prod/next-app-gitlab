@@ -1,7 +1,7 @@
 'use client';
 
-import ClanedarEditor from '@/core/components/overlay/ixDialog/editor/calendarEditor/calendarEditor';
-import IXDialog from '@/core/components/overlay/ixDialog/IXDialog';
+import ClanedarEditor from '@/core/components/primereact/editors/calendarEditor/calendarEditor';
+import IXDialog from '@/core/components/primereact/overlay/ixDialog/TMDialog';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';

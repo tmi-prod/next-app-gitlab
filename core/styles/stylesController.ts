@@ -2,7 +2,7 @@ import { PrimeReactPTOptions } from 'primereact/api';
 import { classNames } from 'primereact/utils';
 
 //My Design System with Tailwind
-export const MyDesignSystem: any = {
+export const MyDesignSystem: PrimeReactPTOptions = {
   inputtext: {
     root: ({ props, context }: { props: any; context: any }) => ({
       className: classNames(

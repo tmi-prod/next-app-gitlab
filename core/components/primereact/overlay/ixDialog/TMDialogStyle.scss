@@ -1,0 +1,44 @@
+#tm-dialog .p-dialog {
+  padding: 0px;
+  margin: 0px;
+  width: 30rem !important;
+  height: 450px;
+  background-color: rgb(100, 153, 153) !important;
+}
+
+#tm-dialog .tm-dialog-header {
+  width: 30rem;
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(215, 252, 252);
+}
+
+#tm-dialog .tm-dialog-content {
+  padding: 0px 2px 0px 2px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#tm-dialog .tm-dialog-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-size: medium;
+  background-color: aliceblue;
+  width: 30rem;
+  height: 1rem !important;
+}
+
+.p-dialog .p-button {
+  margin: 0 0.5rem 0 0;
+  min-width: 10rem;
+}
+
+.p-dialog p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.p-dialog .p-button {
+  min-width: 6rem;
+}
